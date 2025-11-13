@@ -1,9 +1,6 @@
 # Test Code for Procedural Library System
 
 from library_procedural import *
-books = []
-members = []
-borrowed_books = []
 
 def test_library_system():
     """Comprehensive test of all library functions"""

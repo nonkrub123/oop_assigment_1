@@ -5,7 +5,7 @@ members = []
 borrowed_books = []
 
 class Book:
-    """Manage book state"""
+    """Manages book state and available copies."""
 
     def __init__(self,id, title, author, total_copies):
         """Initialize book object"""
@@ -23,18 +23,18 @@ class Book:
             return False
     
     def is_avaiable(self):
-        """Check if copies > 0"""
+        """Check if there are copies left."""
         if self.available_copies > 0:
             return True
         else:
             return False
         
     def get_borrow(self):
-        """Decrease copies by 1"""
+        """Decrease available copies by 1"""
         self.available_copies -= 1
 
     def return_borrow(self):
-        """Increase copies by 1"""
+        """Increase book available copies by 1"""
         if self.total_copies > self.available_copies:
             self.available_copies += 1
             return True
@@ -42,38 +42,38 @@ class Book:
             return False
     
     def __str__(self):
-        """Return format string"""
+        """Return formatted string"""
         return(f"- {self.title} by {self.author}")
     
     def get_summary(self):
-        """Return format string and available copies"""
+        """Return formatted string with available copies"""
         return(f"{self.title} by {self.author} - {self.available_copies} copies available")
     
     def get_title(self):
-        """Return title"""
+        """Return the book’s title"""
         return self.title
 class Member:
-
+    """Handles library member data, borrowing and return actions"""
     def __init__(self, id, name, email):
-        """Initialize member object"""
+        """Initialize member info"""
         self.id = id
         self.name = name
         self.email = email
         self.borrowed = []
     
     def borrowing(self, book_obj):
-        """Append book object into boo"""
+        """Add book object into member's borrowed list"""
         self.borrowed.append(book_obj)
     
     def is_me(self, check_id):
-        """Check if target ID is same as member ID"""
+        """Check if target ID is same as this member's ID"""
         if self.id == check_id:
             return True
         else:
             return False
     
     def is_borrow(self, borrow_id):
-        """Check if borrow specific book by ID"""
+        """Check if member borrow specific book by ID"""
         for book in self.borrowed:
             if book.id == borrow_id:
                 return book
@@ -81,21 +81,21 @@ class Member:
         return False
         
     def is_at_limit(self):
-        """Check if at borrowed limit"""
+        """Check if the member has reached the borrowing limit (3 books)"""
         if len(self.borrowed) >= 3:
             return True
         else:
             return False
     
     def return_book(self, book_id):
-        """remove borrowed book by ID"""
+        """Remove borrowed book by ID"""
         for book in self.borrowed:
             if book.id == book_id:
                 self.borrowed.remove(book)
                 break
     
     def get_book_title(self):
-        """Get list of all book title member borrowed"""
+        """Get list of all book title member currently borrowed"""
         title = [book.get_title() for book in self.borrowed]
         return title
     

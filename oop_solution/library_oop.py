@@ -35,6 +35,42 @@ class Book:
         else:
             return False
 
-
     def __str__(self):
         return(f"{self.title} by {self.author} - {self.available_copies} copies available")
+
+class Member:
+
+    def __init__(self, id, name, email):
+        self.id = id
+        self.name = name
+        self.email = email
+        self.borrowed = []
+    
+    def borrowing(self, book_obj):
+        # book_obj.get_borrow()
+        self.borrowed.append(book_obj)
+    
+    def is_me(self, check_id):
+        if self.id == check_id:
+            return True
+        else:
+            return False
+    
+    def is_borrow(self, borrow_id):
+        for book in self.borrowed:
+            if book.id == borrow_id:
+                return book
+            
+        return False
+        
+    def is_at_limit(self):
+        if len(self.borrowed) >= 3:
+            return True
+        else:
+            return False
+    
+    def return_book(self, book_id):
+        for book in self.borrowed:
+            if book.id == book_id:
+                self.borrowed.remove(book)
+                break

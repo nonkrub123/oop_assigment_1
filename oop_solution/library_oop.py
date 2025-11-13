@@ -52,6 +52,7 @@ class Book:
     def get_title(self):
         """Return the book’s title"""
         return self.title
+    
 class Member:
     """Handles library member data, borrowing and return actions"""
     def __init__(self, id, name, email):

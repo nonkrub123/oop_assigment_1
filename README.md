@@ -6,9 +6,9 @@ A simple Python program that manage library transaction using object-oriented pr
 
 This project is about managing library transaction like borrow or return using class
 
-Project Structure
-
-library-management-oop/
+## Project Structure
+```
+oop_assigment1/
 │
 ├── README.md                          # This file
 │
@@ -19,9 +19,7 @@ library-management-oop/
 ├── oop_solution/
 │   ├── library_oop.py                # Student's OOP implementation (to create)
 │   └── test_oop.py                   # Tests for OOP version (to create)
-
-Design Overview - Detailed explanation of each class, detailing attributes and key methods
----
+```
 
 ## Class Details
 
